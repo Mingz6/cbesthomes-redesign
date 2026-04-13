@@ -1,0 +1,2761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C-Best Homes — Custom Home Builders in Vancouver</title>
+  <meta name="description" content="Vancouver's trusted custom home builder since 2005. Custom homes, laneway homes, and renovations across Greater Vancouver.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       CSS CUSTOM PROPERTIES — LIGHT & DARK THEMES
+       ============================================ */
+    :root {
+      /* Light theme (default) */
+      --bg-primary: #faf9f7;
+      --bg-secondary: #f0eeeb;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f7f6f4;
+      --bg-hero-overlay: rgba(0, 0, 0, 0.45);
+      --text-primary: #1a1a1a;
+      --text-secondary: #5a5a5a;
+      --text-muted: #8a8a8a;
+      --text-on-dark: #ffffff;
+      --accent: #b8860b;
+      --accent-hover: #9a7209;
+      --accent-light: rgba(184, 134, 11, 0.1);
+      --border: rgba(0, 0, 0, 0.08);
+      --border-strong: rgba(0, 0, 0, 0.15);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1);
+      --radius-sm: 12px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --nav-bg: rgba(250, 249, 247, 0.85);
+      --nav-bg-scroll: rgba(250, 249, 247, 0.95);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg-primary: #0f0f0f;
+        --bg-secondary: #1a1a1a;
+        --bg-card: #1e1e1e;
+        --bg-card-hover: #262626;
+        --bg-hero-overlay: rgba(0, 0, 0, 0.55);
+        --text-primary: #f0eeeb;
+        --text-secondary: #a0a0a0;
+        --text-muted: #666666;
+        --text-on-dark: #ffffff;
+        --accent: #d4a535;
+        --accent-hover: #e6b84a;
+        --accent-light: rgba(212, 165, 53, 0.12);
+        --border: rgba(255, 255, 255, 0.08);
+        --border-strong: rgba(255, 255, 255, 0.15);
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+        --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4);
+        --nav-bg: rgba(15, 15, 15, 0.85);
+        --nav-bg-scroll: rgba(15, 15, 15, 0.95);
+      }
+    }
+
+    /* Manual dark theme override via toggle */
+    [data-theme="dark"] {
+      --bg-primary: #0f0f0f;
+      --bg-secondary: #1a1a1a;
+      --bg-card: #1e1e1e;
+      --bg-card-hover: #262626;
+      --bg-hero-overlay: rgba(0, 0, 0, 0.55);
+      --text-primary: #f0eeeb;
+      --text-secondary: #a0a0a0;
+      --text-muted: #666666;
+      --text-on-dark: #ffffff;
+      --accent: #d4a535;
+      --accent-hover: #e6b84a;
+      --accent-light: rgba(212, 165, 53, 0.12);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.15);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4);
+      --nav-bg: rgba(15, 15, 15, 0.85);
+      --nav-bg-scroll: rgba(15, 15, 15, 0.95);
+    }
+
+    /* Manual light theme override via toggle */
+    [data-theme="light"] {
+      --bg-primary: #faf9f7;
+      --bg-secondary: #f0eeeb;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f7f6f4;
+      --bg-hero-overlay: rgba(0, 0, 0, 0.45);
+      --text-primary: #1a1a1a;
+      --text-secondary: #5a5a5a;
+      --text-muted: #8a8a8a;
+      --text-on-dark: #ffffff;
+      --accent: #b8860b;
+      --accent-hover: #9a7209;
+      --accent-light: rgba(184, 134, 11, 0.1);
+      --border: rgba(0, 0, 0, 0.08);
+      --border-strong: rgba(0, 0, 0, 0.15);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1);
+      --nav-bg: rgba(250, 249, 247, 0.85);
+      --nav-bg-scroll: rgba(250, 249, 247, 0.95);
+    }
+
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ============================================
+       TYPOGRAPHY
+       ============================================ */
+    .font-display {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+    }
+
+    .section-desc {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    /* ============================================
+       LAYOUT
+       ============================================ */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .container { padding: 0 2rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .container { padding: 0 3rem; }
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    @media (min-width: 768px) {
+      section { padding: 7rem 0; }
+    }
+
+    /* ============================================
+       NAVIGATION
+       ============================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .nav.scrolled {
+      background: var(--nav-bg-scroll);
+      box-shadow: var(--shadow-md);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+    }
+
+    .nav-logo-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: none;
+      list-style: none;
+      gap: 0.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    .nav-links a {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+      background: var(--accent-light);
+    }
+
+    .nav-cta {
+      display: none;
+      padding: 0.625rem 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    @media (min-width: 768px) {
+      .nav-cta { display: inline-flex; }
+    }
+
+    /* Mobile menu toggle */
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-toggle { display: none; }
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-primary);
+      z-index: 999;
+      padding: 2rem 1.25rem;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 1rem;
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      border-radius: var(--radius-sm);
+      transition: background 0.2s;
+    }
+
+    .mobile-menu a:hover {
+      background: var(--accent-light);
+    }
+
+    .mobile-menu .mobile-cta {
+      margin-top: 1rem;
+      text-align: center;
+      padding: 1rem;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      border-radius: 100px;
+    }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+      will-change: opacity, transform;
+    }
+
+    .hero-bg img.active {
+      opacity: 1;
+    }
+
+    .hero-bg img.ken-burns {
+      animation: kenBurns 8s ease-in-out forwards;
+    }
+
+    @keyframes kenBurns {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.08); }
+    }
+
+    .hero-dots {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+
+    .hero-dot.active {
+      background: #fff;
+      transform: scale(1.3);
+    }
+
+    .hero-dot:hover {
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(0, 0, 0, 0.3) 40%,
+        rgba(0, 0, 0, 0.15) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-content {
+        padding: 3rem 3rem 5rem;
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: #4ade80;
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.08;
+      margin-bottom: 1.5rem;
+      max-width: 800px;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(184, 134, 11, 0.3);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* ============================================
+       STATS BAR
+       ============================================ */
+    .stats {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
+      }
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ============================================
+       SERVICES — BENTO GRID
+       ============================================ */
+    .services-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .services-header .section-desc {
+      margin: 0 auto;
+    }
+
+    .bento-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 768px) {
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .bento-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto auto;
+      }
+      .bento-grid .bento-card:first-child {
+        grid-row: 1 / 3;
+      }
+    }
+
+    .bento-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .bento-card-img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    @media (min-width: 1024px) {
+      .bento-grid .bento-card:first-child .bento-card-img {
+        aspect-ratio: auto;
+        height: 100%;
+        min-height: 400px;
+      }
+      .bento-grid .bento-card:first-child .bento-card-body {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+        padding: 2rem;
+        color: #fff;
+      }
+      .bento-grid .bento-card:first-child .bento-card-body h3,
+      .bento-grid .bento-card:first-child .bento-card-body p {
+        color: #fff;
+      }
+      .bento-grid .bento-card:first-child .bento-card-body p {
+        color: rgba(255,255,255,0.8);
+      }
+    }
+
+    .bento-card-body {
+      padding: 1.5rem;
+    }
+
+    .bento-card-body h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .bento-card-body p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .bento-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+      transition: gap 0.2s;
+    }
+
+    .bento-card-link:hover {
+      gap: 0.7rem;
+    }
+
+    /* ============================================
+       ABOUT
+       ============================================ */
+    .about-grid {
+      display: grid;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+      }
+    }
+
+    .about-image {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      pointer-events: none;
+    }
+
+    .about-body {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .about-feature {
+      padding: 1.25rem;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+    }
+
+    .about-feature-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-feature h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .about-feature p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================
+       PROJECTS GALLERY
+       ============================================ */
+    .projects-header {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .projects-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+    }
+
+    .projects-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 640px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .project-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      group: true;
+    }
+
+    .project-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .project-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .project-card:hover .project-card-overlay {
+      opacity: 1;
+    }
+
+    /* Always show on touch devices */
+    @media (hover: none) {
+      .project-card-overlay { opacity: 1; }
+    }
+
+    .project-card-overlay h3 {
+      color: #fff;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-card-overlay p {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.8rem;
+    }
+
+    /* ============================================
+       PROCESS / TIMELINE
+       ============================================ */
+    .process {
+      background: var(--bg-secondary);
+    }
+
+    .process-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .process-header .section-desc {
+      margin: 0 auto;
+    }
+
+    .process-steps {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 768px) {
+      .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .process-steps {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .process-step {
+      padding: 2rem;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .process-step:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .process-step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 12px;
+      margin-bottom: 1.25rem;
+    }
+
+    .process-step h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .process-step p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       TESTIMONIAL
+       ============================================ */
+    .testimonial-card {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonial-quote {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--text-primary);
+      margin-bottom: 2rem;
+    }
+
+    .testimonial-quote::before {
+      content: '"';
+      display: block;
+      font-size: 4rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .testimonial-author {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .testimonial-role {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================
+       CONTACT / CTA SECTION
+       ============================================ */
+    .cta-section {
+      background: var(--bg-secondary);
+    }
+
+    .cta-grid {
+      display: grid;
+      gap: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .cta-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+      }
+    }
+
+    .cta-info h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .cta-info p {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .cta-contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cta-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+    }
+
+    .cta-contact-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-light);
+      border-radius: 12px;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .cta-contact-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+    }
+
+    .cta-contact-value {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* Form */
+    .cta-form {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-form h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 480px) {
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 0.75rem 1rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 1rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .form-submit:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================
+       BLOG SECTION
+       ============================================ */
+    .blog-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 640px) {
+      .blog-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 1024px) {
+      .blog-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .blog-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent);
+    }
+
+    .blog-card-body {
+      padding: 1.25rem;
+    }
+
+    .blog-card-date {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-card-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-card-excerpt {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .blog-card-read {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    /* Blog modal body */
+    .blog-modal-body {
+      padding: 2rem 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .blog-modal-body { padding: 2.5rem 2rem; }
+    }
+
+    .blog-modal-date {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .blog-modal-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.35rem, 4vw, 1.75rem);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+    }
+
+    .blog-modal-content {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    .blog-modal-content p {
+      margin-bottom: 1rem;
+    }
+
+    .blog-modal-content p:last-child { margin-bottom: 0; }
+
+    /* Privacy modal */
+    .privacy-modal-body {
+      padding: 2rem 1.5rem;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .privacy-modal-body h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .privacy-modal-body h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 1.25rem 0 0.5rem;
+    }
+
+    .privacy-modal-body p,
+    .privacy-modal-body ul {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .privacy-modal-body ul {
+      padding-left: 1.5rem;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      padding: 4rem 0 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 2.5rem;
+      grid-template-columns: 1fr;
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: 640px) {
+      .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr;
+      }
+    }
+
+    .footer-brand p {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      line-height: 1.7;
+      margin-top: 1rem;
+      max-width: 320px;
+    }
+
+    .footer h4 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+
+    .footer-links a {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    @media (min-width: 640px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 1rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .footer-social a:hover {
+      background: var(--accent-light);
+      border-color: var(--accent);
+    }
+
+    /* ============================================
+       SCROLL ANIMATIONS
+       ============================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================
+       DRAFT WATERMARK
+       ============================================ */
+    .draft-banner {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 9999;
+      padding: 0.75rem 1.25rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 100px;
+      box-shadow: var(--shadow-lg);
+      pointer-events: none;
+    }
+
+    /* Theme toggle button */
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.15rem;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .theme-toggle:hover {
+      background: var(--accent-light);
+      border-color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    /* ============================================
+       PROJECT MODAL
+       ============================================ */
+    .project-card { cursor: pointer; }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 1rem;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.open .modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-hero {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .modal-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-hero-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .modal-hero-nav:hover { background: rgba(0,0,0,0.75); }
+    .modal-hero-nav.prev { left: 0.75rem; }
+    .modal-hero-nav.next { right: 0.75rem; }
+
+    .modal-hero-counter {
+      position: absolute;
+      bottom: 0.75rem;
+      right: 0.75rem;
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover { background: rgba(0,0,0,0.75); }
+
+    .modal-body {
+      padding: 1.5rem 2rem 2rem;
+      overflow-y: auto;
+    }
+
+    @media (max-width: 640px) {
+      .modal-body { padding: 1.25rem 1.25rem 1.5rem; }
+    }
+
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 1.75rem);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .modal-location {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-spec {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.85rem;
+      background: var(--bg-secondary);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .modal-spec-icon {
+      font-size: 1rem;
+    }
+
+    .modal-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-desc p { margin-bottom: 0.75rem; }
+    .modal-desc p:last-child { margin-bottom: 0; }
+
+    .modal-thumbnails {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .modal-thumb {
+      width: 72px;
+      height: 54px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      cursor: pointer;
+      border: 2px solid transparent;
+      opacity: 0.6;
+      transition: opacity 0.2s, border-color 0.2s;
+    }
+
+    .modal-thumb.active,
+    .modal-thumb:hover {
+      opacity: 1;
+      border-color: var(--accent);
+    }
+
+    .modal-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-feature-tag {
+      padding: 0.3rem 0.7rem;
+      background: var(--accent-light);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DRAFT BANNER -->
+  <div class="draft-banner">DRAFT — Redesign Concept v1</div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1551721340265-NTUXCPZUUX5Z8BKAZQ22/cbesthomes.png?format=500w" alt="C-Best Homes">
+        <span class="nav-logo-text">C-Best Homes</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Switch light/dark mode">☀️</button>
+      <a href="#contact" class="nav-cta">Get Estimate</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#projects" onclick="closeMobile()">Projects</a>
+    <a href="#process" onclick="closeMobile()">Process</a>
+    <a href="#blog" onclick="closeMobile()">Blog</a>
+    <a href="#contact" onclick="closeMobile()">Contact</a>
+    <a href="#contact" class="mobile-cta" onclick="closeMobile()">Get Estimate</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1491640867008-PH5NR3TFFTSYFZ2DZID4/2ae54963825ca2bdfa8481c43a0f7a89.jpg?format=2500w" alt="Custom home exterior" class="active ken-burns" loading="eager">
+      <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1504994965491-KLPSSP6Y8XDQ6BZJCX6V/001.jpg?format=2500w" alt="Luxury home by C-Best" loading="lazy">
+      <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1566925490609-P966WN1WLVY6A1QUSL4E/DSC_8957.jpg?format=2500w" alt="Custom build Vancouver" loading="lazy">
+      <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1518572747093-WRVOTA7AWF59DNR5PY49/DSC_4537.jpg?format=2500w" alt="New construction home" loading="lazy">
+      <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1574034572166-OG3NZUX4YWOVZUZD9PD7/DSC_4567.jpg?format=2500w" alt="Home construction project" loading="lazy">
+      <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1504995061891-10909TDH28GNPLWF6MBI/DSC_1467.jpg?format=2500w" alt="C-Best craftsmanship" loading="lazy">
+      <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1571179621986-NFPYEZHAYI3SRWTGZNDG/DSC_1925.jpg?format=2500w" alt="Vancouver home project" loading="lazy">
+      <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1581626145736-3RVUW1GUIGCVXLZK10S2/DSC_8367.jpg?format=2500w" alt="Completed custom home" loading="lazy">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-dots"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Building since 2005 &middot; Vancouver, BC
+      </div>
+      <h1 class="font-display">Building homes<br>that stand the<br>test of time.</h1>
+      <p>Custom homes, laneway homes, and full renovations across Greater Vancouver. Over 200 homes built by a family you can trust.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Start Your Project →</a>
+        <a href="#projects" class="btn btn-outline">View Our Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="container">
+      <div class="stats-grid reveal">
+        <div class="stat">
+          <div class="stat-number">200+</div>
+          <div class="stat-label">Homes Built</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Services Offered</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Family Owned</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">From dream to doorstep.</h2>
+        <p class="section-desc">Whether you're building from the ground up, adding a laneway home, or giving your space a full makeover — we handle the entire process.</p>
+      </div>
+      <div class="bento-grid">
+        <div class="bento-card reveal">
+          <img class="bento-card-img" src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1491640867008-PH5NR3TFFTSYFZ2DZID4/2ae54963825ca2bdfa8481c43a0f7a89.jpg?format=1500w" alt="Custom Home Construction" loading="lazy">
+          <div class="bento-card-body">
+            <h3>Custom Homes</h3>
+            <p>From lot selection to completion — we work closely with you and our architects to build your dream home, on time and on budget.</p>
+            <a class="bento-card-link" onclick="openServiceModal('custom-homes')">Learn more →</a>
+          </div>
+        </div>
+        <div class="bento-card reveal">
+          <img class="bento-card-img" src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/b7dfde2e-cf1b-495c-886d-b2f1c068cf0e/20250925_132721.jpg?format=1500w" alt="Laneway Home" loading="lazy">
+          <div class="bento-card-body">
+            <h3>Laneway Homes</h3>
+            <p>Vancouver recently increased FSR to 25% — build up to 1,000 sq ft on a standard lot. A smart way to add value and rental income.</p>
+            <a class="bento-card-link" onclick="openServiceModal('laneway-homes')">Learn more →</a>
+          </div>
+        </div>
+        <div class="bento-card reveal">
+          <img class="bento-card-img" src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1491641141769-B7JX4QZ7SZT8FPD01UW6/vancouver-custom-home-cbest.jpg?format=1500w" alt="Home Renovations" loading="lazy">
+          <div class="bento-card-body">
+            <h3>Renovations</h3>
+            <p>From bathroom makeovers to full home renovations. Our experienced team keeps your project on track and delivers beautiful results.</p>
+            <a class="bento-card-link" onclick="openServiceModal('renovations')">Learn more →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <img src="https://images.squarespace-cdn.com/content/v1/5310cef7e4b08602cbfa36bf/1410210555855-N29TNUAMCINE2SQE73XN/Spaces05.jpg?format=1500w" alt="C-Best Homes office" loading="lazy">
+        </div>
+        <div class="about-body reveal">
+          <div class="section-label">Our Story</div>
+          <h2 class="section-title">Family-built, community-trusted.</h2>
+          <p class="section-desc">Founded in 2005, our family-owned company has built over 200 homes across Greater Vancouver. Many of our clients return to build their second or third home — that kind of trust means everything to us.</p>
+          <p class="section-desc">We've maintained strong relationships with the same trusted subcontractors for two decades, ensuring consistently high-quality work. Led personally by Cheema and family, customer care is at the core of everything we do.</p>
+          <p class="section-desc" style="margin-top:0.75rem;">Vancouver's booming housing market has brought its share of challenges — abandoned projects and poor craftsmanship from inexperienced builders undercutting each other. At C-Best, we take pride in our honesty, integrity, and long-standing reputation. We specialize in building 1, 2, and 3 story houses, townhouses, and laneway homes.</p>
+          <div class="about-features">
+            <div class="about-feature">
+              <div class="about-feature-icon">🏠</div>
+              <h4>200+ Homes</h4>
+              <p>Built across Greater Vancouver</p>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">👨‍👩‍👧‍👦</div>
+              <h4>Family Owned</h4>
+              <p>Personal care from Cheema & family </p>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">🤝</div>
+              <h4>Long-term Subs</h4>
+              <p>Same trusted trades since 2005</p>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">⭐</div>
+              <h4>Repeat Clients</h4>
+              <p>Many build 2nd & 3rd homes with us</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="projects-header reveal">
+        <div>
+          <div class="section-label">Featured Work</div>
+          <h2 class="section-title">Crafted with care.</h2>
+        </div>
+        <a href="#projects" class="btn btn-primary" style="align-self: flex-end;">View All Projects →</a>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card reveal" data-project="952-east-53rd" onclick="openProjectModal('952-east-53rd')">
+          <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1516761137236-9KS7Q0R0LHN4LF0862CP/DSC_4537.jpg?format=1000w" alt="952 East 53rd Ave" loading="lazy">
+          <div class="project-card-overlay">
+            <h3>952 East 53rd Ave</h3>
+            <p>9 Bed / 5 Bath · 5,366 sq ft · Vancouver</p>
+          </div>
+        </div>
+        <div class="project-card reveal" data-project="3508-malta" onclick="openProjectModal('3508-malta')">
+          <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1504992577805-GVIKNYG8M9QXIYDDYM0K/C-Best+Construction-146.jpg?format=1000w" alt="3508 Malta Ave" loading="lazy">
+          <div class="project-card-overlay">
+            <h3>3508 Malta Ave</h3>
+            <p>7 Bed / 6 Bath · 3,178 sq ft · Vancouver</p>
+          </div>
+        </div>
+        <div class="project-card reveal" data-project="418-springer" onclick="openProjectModal('418-springer')">
+          <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1504034000472-S4ZF3HY9EC8Q5EAY4VPW/C-Best+Construction-146.jpg?format=1000w" alt="418 North Springer Rd" loading="lazy">
+          <div class="project-card-overlay">
+            <h3>418 North Springer Rd</h3>
+            <p>7 Bed / 8 Bath · 4,696 sq ft · Burnaby</p>
+          </div>
+        </div>
+        <div class="project-card reveal" data-project="5765-wales" onclick="openProjectModal('5765-wales')">
+          <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1504994054002-MEYM7LTR25NYAIVZTVEF/001.jpg?format=1000w" alt="5765 Wales St" loading="lazy">
+          <div class="project-card-overlay">
+            <h3>5765 Wales St</h3>
+            <p>7 Bed / 5 Bath · 2,409 sq ft · Vancouver</p>
+          </div>
+        </div>
+        <div class="project-card reveal" data-project="5022-hoy" onclick="openProjectModal('5022-hoy')">
+          <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1491640867008-PH5NR3TFFTSYFZ2DZID4/2ae54963825ca2bdfa8481c43a0f7a89.jpg?format=1000w" alt="5022 Hoy St Duplex" loading="lazy">
+          <div class="project-card-overlay">
+            <h3>5022 Hoy St (Duplex)</h3>
+            <p>5 Bed / 3 Bath · 2,100 sq ft · Vancouver</p>
+          </div>
+        </div>
+        <div class="project-card reveal" data-project="7283-rupert" onclick="openProjectModal('7283-rupert')">
+          <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/b7dfde2e-cf1b-495c-886d-b2f1c068cf0e/20250925_132721.jpg?format=1000w" alt="7283 Rupert St Duplex" loading="lazy">
+          <div class="project-card-overlay">
+            <h3>7283-7285 Rupert St</h3>
+            <p>6 Bed / 4 Bath · 2,306 sq ft · Vancouver</p>
+          </div>
+        </div>
+        <div class="project-card reveal" data-project="2848-kitchener" onclick="openProjectModal('2848-kitchener')">
+          <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1504994554753-5ZR0IHRCF7A6WSR0ELRC/C-Best+Construction-146.jpg?format=1000w" alt="2848 Kitchener St" loading="lazy">
+          <div class="project-card-overlay">
+            <h3>2848 Kitchener St</h3>
+            <p>6 Bed / 5 Bath · 2,933 sq ft · Vancouver</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="process">
+    <div class="container">
+      <div class="process-header reveal">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Our process, simplified.</h2>
+        <p class="section-desc">We keep you in the loop at every stage — constant communication means fewer surprises and better results.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="process-step-num">01</div>
+          <h3>Consultation</h3>
+          <p>We start with a free consultation to understand your vision, budget, and timeline. No pressure — just honest conversation.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step-num">02</div>
+          <h3>Design & Planning</h3>
+          <p>Work with our architects to nail down floor plans, materials, and finishes. We guide you on current trends so nothing feels dated.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step-num">03</div>
+          <h3>Construction</h3>
+          <p>Our trusted trades team gets to work. We invite you on-site regularly and communicate at every milestone — no guessing games.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step-num">04</div>
+          <h3>Completion</h3>
+          <p>Walkthrough, final touches, and handover. We make sure every detail is right before you get the keys to your dream home.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section>
+    <div class="container">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">
+          We built our first home with C-Best in 2015, came back for our second in 2020, and recommended them to three friends. Cheema and the team treat you like family.
+        </div>
+        <div class="testimonial-author">Returning Client</div>
+        <div class="testimonial-role">Built 2nd home with C-Best Homes</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:3rem;">
+        <div class="section-label">From Our Blog</div>
+        <h2 class="section-title">Tips & insights for homeowners.</h2>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card reveal" onclick="openBlogModal('mold-free')">
+          <div class="blog-card-body">
+            <div class="blog-card-date">April 14, 2021</div>
+            <h3 class="blog-card-title">How to Keep Your Bathroom Mold-Free: 5 Important Tips</h3>
+            <p class="blog-card-excerpt">Have you ever been bothered by the growing mold in your bathroom? Once it makes itself grow in the bathroom, it's challenging to get rid of permanently.</p>
+            <span class="blog-card-read">Read More →</span>
+          </div>
+        </div>
+        <div class="blog-card reveal" onclick="openBlogModal('summer-renos')">
+          <div class="blog-card-body">
+            <div class="blog-card-date">March 20, 2021</div>
+            <h3 class="blog-card-title">5 Simple and Low-Cost Home Renovations for Summer</h3>
+            <p class="blog-card-excerpt">Summer is the best time to take up a home renovation or custom home building project. We've got some straightforward and low-cost ideas.</p>
+            <span class="blog-card-read">Read More →</span>
+          </div>
+        </div>
+        <div class="blog-card reveal" onclick="openBlogModal('kitchen-remodel')">
+          <div class="blog-card-body">
+            <div class="blog-card-date">March 15, 2021</div>
+            <h3 class="blog-card-title">How to Effectively Remodel Your Kitchen on a Budget</h3>
+            <p class="blog-card-excerpt">Who doesn't want the most important part of their home to look new, attractive, and elegant? The kitchen is the center of family day-to-day living.</p>
+            <span class="blog-card-read">Read More →</span>
+          </div>
+        </div>
+        <div class="blog-card reveal" onclick="openBlogModal('landscaping')">
+          <div class="blog-card-body">
+            <div class="blog-card-date">February 20, 2021</div>
+            <h3 class="blog-card-title">5 Simple Landscaping Ideas to Increase Your Home's Value</h3>
+            <p class="blog-card-excerpt">Landscaping is one of the easiest ways to enrich your home. Research shows it can increase the value of your home by 15% to 20%.</p>
+            <span class="blog-card-read">Read More →</span>
+          </div>
+        </div>
+        <div class="blog-card reveal" onclick="openBlogModal('living-room')">
+          <div class="blog-card-body">
+            <div class="blog-card-date">February 15, 2021</div>
+            <h3 class="blog-card-title">5 Easy Ways to Do an Inspiring Living Room Remodel on a Budget</h3>
+            <p class="blog-card-excerpt">The living room is where you spend most of your time, entertain guests, and socialize. A remodel gives an overall gleaming effect to your home.</p>
+            <span class="blog-card-read">Read More →</span>
+          </div>
+        </div>
+        <div class="blog-card reveal" onclick="openBlogModal('renovate-older')">
+          <div class="blog-card-body">
+            <div class="blog-card-date">December 1, 2020</div>
+            <h3 class="blog-card-title">Should You Renovate Your Older Home?</h3>
+            <p class="blog-card-excerpt">Your 20-year-old house is beginning to show its age. The kitchen closets have deteriorated, and the bathrooms could use an update.</p>
+            <span class="blog-card-read">Read More →</span>
+          </div>
+        </div>
+        <div class="blog-card reveal" onclick="openBlogModal('energy-efficiency')">
+          <div class="blog-card-body">
+            <div class="blog-card-date">September 10, 2020</div>
+            <h3 class="blog-card-title">Energy Efficiency Trends in Home Construction</h3>
+            <p class="blog-card-excerpt">When designing a home, it's crucial to plan for sustainability. Energy-efficient features will save you money in the long run.</p>
+            <span class="blog-card-read">Read More →</span>
+          </div>
+        </div>
+        <div class="blog-card reveal" onclick="openBlogModal('consultation')">
+          <div class="blog-card-body">
+            <div class="blog-card-date">August 31, 2020</div>
+            <h3 class="blog-card-title">Is Getting a Consultation from Custom Home Builders a Good Idea?</h3>
+            <p class="blog-card-excerpt">One of the issues you'll face while planning your home is finding the right builder. The best way is to set up a free consultation session.</p>
+            <span class="blog-card-read">Read More →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / CTA -->
+  <section id="contact" class="cta-section">
+    <div class="container">
+      <div class="cta-grid">
+        <div class="cta-info reveal">
+          <div class="section-label">Get In Touch</div>
+          <h2>Ready to build your dream home?</h2>
+          <p>Tell us about your project and we'll get back to you within 24 hours. Free consultation — no strings attached.</p>
+          <p style="font-size:0.875rem; color:var(--text-muted); margin-top:0.5rem;">Meetings by appointment only. Please call ahead to book.</p>
+          <div class="cta-contact-list">
+            <div class="cta-contact-item">
+              <div class="cta-contact-icon">📞</div>
+              <div>
+                <div class="cta-contact-label">Phone</div>
+                <div class="cta-contact-value"><a href="tel:7782390952" style="color:inherit;text-decoration:none;">778-239-0952</a> / <a href="tel:6048335162" style="color:inherit;text-decoration:none;">604-833-5162</a></div>
+              </div>
+            </div>
+            <div class="cta-contact-item">
+              <div class="cta-contact-icon">✉️</div>
+              <div>
+                <div class="cta-contact-label">Email</div>
+                <div class="cta-contact-value"><a href="mailto:info@cbesthomes.com" style="color:inherit;text-decoration:none;">info@cbesthomes.com</a></div>
+              </div>
+            </div>
+            <div class="cta-contact-item">
+              <div class="cta-contact-icon">📍</div>
+              <div>
+                <div class="cta-contact-label">Office</div>
+                <div class="cta-contact-value">952 E 53 Ave, Vancouver, BC V5X 1J6</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cta-form reveal">
+          <h3>Tell us about your project</h3>
+          <form onsubmit="event.preventDefault(); alert('This is a demo — form not connected.');">
+            <div class="form-grid">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" id="firstName" required>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" id="lastName" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+              </div>
+              <div class="form-group">
+                <label for="projectType">Project Type</label>
+                <select id="projectType">
+                  <option>Custom Home</option>
+                  <option>Laneway Home</option>
+                  <option>Renovation</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Tell us more</label>
+                <textarea id="message" placeholder="Budget, timeline, location, vision..."></textarea>
+              </div>
+              <button type="submit" class="form-submit">Send Message →</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE DETAIL MODAL -->
+  <div class="modal-overlay" id="serviceModal">
+    <div class="modal">
+      <div class="modal-hero">
+        <img id="serviceModalImg" src="" alt="">
+        <button class="modal-close" onclick="closeServiceModal()" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-title" id="serviceModalTitle"></h2>
+        <div class="modal-specs" id="serviceModalHighlights"></div>
+        <div class="modal-desc" id="serviceModalDesc"></div>
+        <a href="#contact" class="btn btn-primary" onclick="closeServiceModal()" style="display:inline-flex;margin-top:0.5rem;">Get a Free Estimate →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT MODAL -->
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal">
+      <div class="modal-hero">
+        <img id="modalHeroImg" src="" alt="">
+        <button class="modal-close" onclick="closeProjectModal()" aria-label="Close">✕</button>
+        <button class="modal-hero-nav prev" onclick="modalPrevImg()">‹</button>
+        <button class="modal-hero-nav next" onclick="modalNextImg()">›</button>
+        <div class="modal-hero-counter" id="modalCounter">1 / 1</div>
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <div class="modal-location" id="modalLocation"></div>
+        <div class="modal-specs" id="modalSpecs"></div>
+        <div class="modal-features" id="modalFeatures"></div>
+        <div class="modal-desc" id="modalDesc"></div>
+        <div class="modal-thumbnails" id="modalThumbs"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOG MODAL -->
+  <div class="modal-overlay" id="blogModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeBlogModal()" aria-label="Close" style="position:absolute;top:1rem;right:1rem;z-index:2;">✕</button>
+      <div class="blog-modal-body">
+        <div class="blog-modal-date" id="blogModalDate"></div>
+        <h2 class="blog-modal-title" id="blogModalTitle"></h2>
+        <div class="blog-modal-content" id="blogModalContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIVACY POLICY MODAL -->
+  <div class="modal-overlay" id="privacyModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closePrivacyModal()" aria-label="Close" style="position:absolute;top:1rem;right:1rem;z-index:2;">✕</button>
+      <div class="privacy-modal-body">
+        <h2>Privacy Policy</h2>
+        <p><strong>Effective date:</strong> December 05, 2018</p>
+        <p>C-Best Homes Ltd ("us", "we", or "our") operates the cbesthomes.com website and the C-Best Homes mobile application (the "Service"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service.</p>
+
+        <h3>Information Collection And Use</h3>
+        <p>We collect several different types of information to provide and improve our Service to you.</p>
+
+        <h3>Personal Data</h3>
+        <p>While using our Service, we may ask you to provide personally identifiable information including:</p>
+        <ul>
+          <li>Email address</li>
+          <li>First name and last name</li>
+          <li>Phone number</li>
+          <li>Address, State, Province, ZIP/Postal code, City</li>
+          <li>Cookies and Usage Data</li>
+        </ul>
+
+        <h3>Tracking & Cookies</h3>
+        <p>We use cookies and similar tracking technologies to track activity on our Service. You can instruct your browser to refuse all cookies. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
+
+        <h3>Use of Data</h3>
+        <p>C-Best Homes Ltd uses the collected data to:</p>
+        <ul>
+          <li>Provide and maintain the Service</li>
+          <li>Notify you about changes</li>
+          <li>Provide customer care and support</li>
+          <li>Provide analysis to improve the Service</li>
+          <li>Monitor usage of the Service</li>
+          <li>Detect, prevent and address technical issues</li>
+        </ul>
+
+        <h3>Transfer of Data</h3>
+        <p>Your information may be transferred to and maintained on computers located outside your jurisdiction. If you are located outside Canada and choose to provide information to us, we transfer the data to Canada and process it there.</p>
+
+        <h3>Security of Data</h3>
+        <p>The security of your data is important to us. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</p>
+
+        <h3>Children's Privacy</h3>
+        <p>Our Service does not address anyone under the age of 18. We do not knowingly collect personally identifiable information from anyone under 18.</p>
+
+        <h3>Changes to This Privacy Policy</h3>
+        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+
+        <h3>Contact Us</h3>
+        <p>If you have questions about this Privacy Policy:</p>
+        <ul>
+          <li>Email: info@cbesthomes.com</li>
+          <li>Phone: 1-833-604-4663</li>
+          <li>Website: cbesthomes.com/contact</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1551721340265-NTUXCPZUUX5Z8BKAZQ22/cbesthomes.png?format=500w" alt="C-Best Homes" style="height: 32px;">
+          </a>
+          <p>Vancouver's trusted custom home builder since 2005. Over 200 homes built by a family-owned team that treats every project like it's their own.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Custom Homes</a></li>
+            <li><a href="#services">Laneway Homes</a></li>
+            <li><a href="#services">Renovations</a></li>
+            <li><a href="#contact">Get Estimate</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#process">Our Process</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" onclick="event.preventDefault();openPrivacyModal();">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 C-Best Construction Ltd. All rights reserved.</span>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/10160285945345508" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+          <a href="https://instagram.com/cbesthomes01" aria-label="Instagram" target="_blank" rel="noopener">ig</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    const toggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    function closeMobile() {
+      toggle.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+
+    function getSystemTheme() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function getEffectiveTheme() {
+      const saved = localStorage.getItem('cbest-theme');
+      return saved || getSystemTheme();
+    }
+
+    function applyTheme(theme) {
+      if (theme === 'system') {
+        root.removeAttribute('data-theme');
+        themeToggle.textContent = getSystemTheme() === 'dark' ? '☀️' : '🌙';
+        themeToggle.title = 'Using system theme — click to override';
+      } else {
+        root.setAttribute('data-theme', theme);
+        themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+        themeToggle.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+      }
+    }
+
+    // Init: apply saved or system theme
+    const initTheme = getEffectiveTheme();
+    applyTheme(initTheme === getSystemTheme() ? 'system' : initTheme);
+
+    // Cycle: system → dark → light → system (if system is light)
+    // Or: system → light → dark → system (if system is dark)
+    themeToggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme');
+      if (!current) {
+        // Currently following system — force the opposite
+        const opposite = getSystemTheme() === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('cbest-theme', opposite);
+        applyTheme(opposite);
+      } else if (current !== getSystemTheme()) {
+        // Already on opposite — go back to system
+        localStorage.removeItem('cbest-theme');
+        applyTheme('system');
+      } else {
+        // Same as system — force opposite
+        const opposite = current === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('cbest-theme', opposite);
+        applyTheme(opposite);
+      }
+    });
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if (!localStorage.getItem('cbest-theme')) applyTheme('system');
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // ========== HERO SLIDESHOW ==========
+    (() => {
+      const slides = document.querySelectorAll('.hero-bg img');
+      const dotsContainer = document.querySelector('.hero-dots');
+      if (slides.length < 2) return;
+
+      let current = 0;
+      let interval;
+      const DELAY = 6000;
+
+      // Build dots
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Slide ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      });
+
+      const dots = dotsContainer.querySelectorAll('.hero-dot');
+
+      function goTo(index) {
+        slides[current].classList.remove('active', 'ken-burns');
+        dots[current].classList.remove('active');
+        current = index;
+        slides[current].classList.add('active');
+        // Trigger Ken Burns reflow
+        void slides[current].offsetWidth;
+        slides[current].classList.add('ken-burns');
+        dots[current].classList.add('active');
+        resetTimer();
+      }
+
+      function next() {
+        goTo((current + 1) % slides.length);
+      }
+
+      function resetTimer() {
+        clearInterval(interval);
+        interval = setInterval(next, DELAY);
+      }
+
+      // Pause on hover
+      const hero = document.querySelector('.hero');
+      hero.addEventListener('mouseenter', () => clearInterval(interval));
+      hero.addEventListener('mouseleave', () => { interval = setInterval(next, DELAY); });
+
+      // Start
+      interval = setInterval(next, DELAY);
+    })();
+
+    // ========== PROJECT MODAL ==========
+    const SQ = 'https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b';
+
+    const projectData = {
+      '952-east-53rd': {
+        title: '952 East 53rd Ave',
+        location: 'South Vancouver, Vancouver',
+        type: 'Custom Home',
+        beds: 9, baths: 5, sqft: '5,366',
+        features: ['Custom Home', '3 Levels', 'Mountain Views'],
+        desc: '<p>A stunning custom home in South Vancouver with 9 bedrooms and 5 bathrooms across 5,366 sq ft. Designed and built by C-Best Homes with premium finishes throughout.</p>',
+        images: [
+          `${SQ}/1516761137236-9KS7Q0R0LHN4LF0862CP/DSC_4537.jpg?format=1500w`,
+          `${SQ}/1516761499273-SR86O4QWBXKEGBVGHTEP/DSC_4542.jpg?format=1500w`,
+          `${SQ}/1516761284671-82YF5DALXVZCVKBRL8AR/DSC_4385.jpg?format=1500w`,
+          `${SQ}/1516761283231-R0AKSGIHZYEQ70OCLVGN/DSC_4391.jpg?format=1500w`,
+          `${SQ}/1516761367306-L6VMJDQNDXMMTAP4VSB1/DSC_4427.jpg?format=1500w`,
+          `${SQ}/1516761387534-7MAYYJJDYB49PV3CFK93/DSC_4451.jpg?format=1500w`,
+          `${SQ}/1516761500711-LBRKWVXRPD2Y0RLFQL7C/DSC_4452.jpg?format=1500w`
+        ]
+      },
+      '3508-malta': {
+        title: '3508 Malta Ave',
+        location: 'Renfrew Heights, Vancouver',
+        type: 'Custom Home + Laneway',
+        beds: 7, baths: 6, sqft: '3,178',
+        features: ['Custom Home', 'Laneway Home', 'Corner Lot', 'Mountain Views', 'Radiant Heating', 'HRV System'],
+        desc: '<p>Highly desirable Renfrew Heights neighbourhood. This beautiful custom build features three levels, 8 bedrooms and 6 bathrooms, and sits on a large, bright corner lot with breathtaking mountain views.</p><p>Spacious open floor design with 4 bedrooms and 3 baths on the upper floor, high ceilings, 1 bed + den and 1 bath on the main, and 3 bedrooms with 2 baths in the basement — plus a 1.5-level laneway house with 2 bedrooms and 2 baths.</p><p>Features include hardwood floors, radiant heating, HRV, central vacuum, alarm system, and HD camera security.</p>',
+        images: [
+          `${SQ}/1504992577805-GVIKNYG8M9QXIYDDYM0K/C-Best+Construction-146.jpg?format=1500w`,
+          `${SQ}/1504992461913-P1U3X75K0GM05WPYRIPZ/262083278-1-2.jpg?format=1500w`,
+          `${SQ}/1504992463804-OC6NWY7I0HMNT2XKJ7QI/262083278-2-2.jpg?format=1500w`,
+          `${SQ}/1504992475689-4MD7BJB9KE24PZI1CGR7/262083278-3-2.jpg?format=1500w`,
+          `${SQ}/1504992479753-VKC9JSJIPXZJMLQ5E19X/262083278-4-2.jpg?format=1500w`,
+          `${SQ}/1504992493002-EYP9WFZ33ZQH38CZ9UA3/262083278-5-2.jpg?format=1500w`,
+          `${SQ}/1504992495027-9C0UYHD6IGM6P2ZZUP7S/262083278-6-2.jpg?format=1500w`,
+          `${SQ}/1504992507718-IAEIS9XX6Z7HAIWV6H2U/262083278-7-2.jpg?format=1500w`,
+          `${SQ}/1504992508492-OZY7XYNWZRP3PX0YCGB5/262083278-8-2.jpg?format=1500w`,
+          `${SQ}/1504992520941-OZCS26AN80Z2OKWNB7IF/262083278-9-2.jpg?format=1500w`,
+          `${SQ}/1504992533303-D3AAKJCYWHFNSOXJZXTV/262083278-12-2.jpg?format=1500w`,
+          `${SQ}/1504992534913-ORYPSDUVQ9M215F6VCUX/262083278-14-2.jpg?format=1500w`
+        ]
+      },
+      '418-springer': {
+        title: '418 North Springer Rd',
+        location: 'Capitol Hill, Burnaby',
+        type: 'Custom Home',
+        beds: 7, baths: 8, sqft: '4,696',
+        features: ['Custom Home', 'Ocean Views', 'Open Concept', '3 Kitchens', 'Skylights', 'Jacuzzi Tub'],
+        desc: '<p>Custom built home with the entire floorplan created in-house by our architects. Modern interior design with open-to-below foyer and open concept layout.</p><p>Quartz countertops and island, wok kitchen, and pantry. Covered deck off the master bedroom with ocean views — 3 of 4 bedrooms face the front to enjoy the scenery.</p><p>Each bedroom has its own bathroom. Skylights for natural light. Jacuzzi tub and oversized shower in the master ensuite. High-end finishing throughout.</p>',
+        images: [
+          `${SQ}/1504034000472-S4ZF3HY9EC8Q5EAY4VPW/C-Best+Construction-146.jpg?format=1500w`,
+          `${SQ}/1504033745956-WDBZWHQ8D2UZW2EVUSUI/262177088-1.JPG?format=1500w`,
+          `${SQ}/1504033746294-5N5IGRJ506YLKL667J6R/262177088-3.JPG?format=1500w`,
+          `${SQ}/1504033747457-QMBQRO0B7Q4HC803RUC2/262177088-7.JPG?format=1500w`,
+          `${SQ}/1504033747751-QR4FPS76PU0E6NED703Z/262177088-9.JPG?format=1500w`,
+          `${SQ}/1504033748630-OOXARKK634HB0C2WUHMA/262177088-11.JPG?format=1500w`,
+          `${SQ}/1504033748840-G05GT3OM0PESR6TV2BW6/262177088-14.JPG?format=1500w`
+        ]
+      },
+      '5765-wales': {
+        title: '5765 Wales St',
+        location: 'Killarney, Vancouver',
+        type: 'Custom Home + Laneway',
+        beds: 7, baths: 5, sqft: '2,409',
+        features: ['Custom Home', 'Laneway Home'],
+        desc: '<p>A beautiful custom home with laneway in the Killarney neighbourhood. 7 bedrooms and 5 bathrooms across 2,409 sq ft, built with C-Best\'s signature quality and attention to detail.</p>',
+        images: [
+          `${SQ}/1504994054002-MEYM7LTR25NYAIVZTVEF/001.jpg?format=1500w`,
+          `${SQ}/1504994147176-UIUMGROXOCZQXQXJI066/003.jpg?format=1500w`,
+          `${SQ}/1504994154658-WGT5ZKKAWXEL6ZBULT6S/002.jpg?format=1500w`,
+          `${SQ}/1504994173782-B1806E3WWMO35VV29FDD/DSC_1376.jpg?format=1500w`,
+          `${SQ}/1504994177551-826VUIXX9XCSZPKTYX3Y/DSC_1381.jpg?format=1500w`,
+          `${SQ}/1504994216170-38K23H4W2HNCO65WMBKG/DSC_1384.jpg?format=1500w`,
+          `${SQ}/1504994214789-BTT51IVG8K0ZXW0RK4RX/DSC_1393.jpg?format=1500w`,
+          `${SQ}/1504994254349-0R2OX7UUTV82FWVI6Z4E/DSC_1395.jpg?format=1500w`,
+          `${SQ}/1504994256384-TP34P4Z0YHXA0FUL7SKK/DSC_1396.jpg?format=1500w`,
+          `${SQ}/1504994310996-5SMBTPY70V1ZCXPP5XH8/DSC_1397.jpg?format=1500w`,
+          `${SQ}/1504994297469-I9QMWJU9DYL5D61O3DC1/DSC_1399.jpg?format=1500w`,
+          `${SQ}/1504994376136-YJZZKPTHRUFXNFWG5FZT/DSC_1405.jpg?format=1500w`,
+          `${SQ}/1504994379991-TOSS9L6JHHK6U5L2NG4Q/DSC_1408.jpg?format=1500w`
+        ]
+      },
+      '5022-hoy': {
+        title: '5022 Hoy St (Duplex)',
+        location: 'Collingwood, Vancouver',
+        type: 'Custom Home',
+        beds: 5, baths: 3, sqft: '2,100',
+        features: ['Duplex', 'Custom Home'],
+        desc: '<p>A custom duplex in the Collingwood neighbourhood with 5 bedrooms and 3 bathrooms across 2,100 sq ft. Smart dual-unit design for homeowners looking to add rental income.</p>',
+        images: [
+          `${SQ}/1491640867008-PH5NR3TFFTSYFZ2DZID4/2ae54963825ca2bdfa8481c43a0f7a89.jpg?format=1500w`
+        ]
+      },
+      '7283-rupert': {
+        title: '7283-7285 Rupert St (Duplex)',
+        location: 'Fraserview, Vancouver',
+        type: 'Custom Home',
+        beds: 6, baths: 4, sqft: '2,306',
+        features: ['Duplex', 'Custom Home'],
+        desc: '<p>A spacious duplex in the Fraserview neighbourhood with 6 bedrooms and 4 bathrooms across 2,306 sq ft. Quality construction with C-Best\'s attention to detail.</p>',
+        images: [
+          `${SQ}/b7dfde2e-cf1b-495c-886d-b2f1c068cf0e/20250925_132721.jpg?format=1500w`
+        ]
+      },
+      '2848-kitchener': {
+        title: '2848 Kitchener St',
+        location: 'Renfrew, Vancouver',
+        type: 'Custom Home + Laneway',
+        beds: 6, baths: 5, sqft: '2,933',
+        features: ['Custom Home', 'Laneway Home', '3 Kitchens', 'HRV System', 'Double Garage'],
+        desc: '<p>Top quality, 2,933 square foot house that includes two storeys, 6 bedrooms, 3 kitchens, granite counter tops, maple wood cabinets, wood floorings, HRV & alarm system, and double garage.</p>',
+        images: [
+          `${SQ}/1504994554753-5ZR0IHRCF7A6WSR0ELRC/C-Best+Construction-146.jpg?format=1500w`
+        ]
+      }
+    };
+
+    let modalImgIndex = 0;
+    let modalImages = [];
+
+    function openProjectModal(id) {
+      const p = projectData[id];
+      if (!p) return;
+
+      modalImages = p.images;
+      modalImgIndex = 0;
+
+      document.getElementById('modalTitle').textContent = p.title;
+      document.getElementById('modalLocation').textContent = `📍 ${p.location}`;
+
+      // Specs
+      const specsEl = document.getElementById('modalSpecs');
+      specsEl.innerHTML = `
+        <span class="modal-spec"><span class="modal-spec-icon">🛏️</span>${p.beds} Bedrooms</span>
+        <span class="modal-spec"><span class="modal-spec-icon">🚿</span>${p.baths} Bathrooms</span>
+        <span class="modal-spec"><span class="modal-spec-icon">📐</span>${p.sqft} sq ft</span>
+        <span class="modal-spec"><span class="modal-spec-icon">🏠</span>${p.type}</span>
+      `;
+
+      // Features
+      const featEl = document.getElementById('modalFeatures');
+      featEl.innerHTML = p.features.map(f => `<span class="modal-feature-tag">${f}</span>`).join('');
+
+      // Description
+      document.getElementById('modalDesc').innerHTML = p.desc;
+
+      // Gallery
+      updateModalImage();
+      buildThumbnails();
+
+      // Show/hide nav arrows for single-image projects
+      const prevBtn = document.querySelector('.modal-hero-nav.prev');
+      const nextBtn = document.querySelector('.modal-hero-nav.next');
+      const counter = document.getElementById('modalCounter');
+      if (modalImages.length <= 1) {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        counter.style.display = 'none';
+      } else {
+        prevBtn.style.display = '';
+        nextBtn.style.display = '';
+        counter.style.display = '';
+      }
+
+      document.getElementById('projectModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjectModal() {
+      document.getElementById('projectModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function updateModalImage() {
+      const img = document.getElementById('modalHeroImg');
+      img.src = modalImages[modalImgIndex];
+      img.alt = `Photo ${modalImgIndex + 1}`;
+      document.getElementById('modalCounter').textContent = `${modalImgIndex + 1} / ${modalImages.length}`;
+
+      // Update active thumbnail
+      document.querySelectorAll('.modal-thumb').forEach((t, i) => {
+        t.classList.toggle('active', i === modalImgIndex);
+      });
+    }
+
+    function modalNextImg() {
+      modalImgIndex = (modalImgIndex + 1) % modalImages.length;
+      updateModalImage();
+    }
+
+    function modalPrevImg() {
+      modalImgIndex = (modalImgIndex - 1 + modalImages.length) % modalImages.length;
+      updateModalImage();
+    }
+
+    function buildThumbnails() {
+      const container = document.getElementById('modalThumbs');
+      if (modalImages.length <= 1) {
+        container.innerHTML = '';
+        return;
+      }
+      container.innerHTML = modalImages.map((src, i) =>
+        `<div class="modal-thumb ${i === 0 ? 'active' : ''}" onclick="modalGoTo(${i})"><img src="${src.replace('1500w','300w')}" alt="Thumbnail ${i+1}" loading="lazy"></div>`
+      ).join('');
+    }
+
+    function modalGoTo(i) {
+      modalImgIndex = i;
+      updateModalImage();
+    }
+
+    // Close on overlay click
+    document.getElementById('projectModal').addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal-overlay')) closeProjectModal();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (document.getElementById('projectModal').classList.contains('open')) {
+        if (e.key === 'Escape') closeProjectModal();
+        if (e.key === 'ArrowRight') modalNextImg();
+        if (e.key === 'ArrowLeft') modalPrevImg();
+      }
+      if (document.getElementById('serviceModal').classList.contains('open')) {
+        if (e.key === 'Escape') closeServiceModal();
+      }
+    });
+
+    // ========== SERVICE MODAL ==========
+    const serviceData = {
+      'custom-homes': {
+        title: 'Custom Homes',
+        image: `${SQ}/1491640867008-PH5NR3TFFTSYFZ2DZID4/2ae54963825ca2bdfa8481c43a0f7a89.jpg?format=1500w`,
+        highlights: ['Full Design & Build', 'In-house Architects', 'Duplexes & Single Family', 'Permit Handling'],
+        desc: `<p>From concept to completion, every step of our projects are done with care and concern for architectural and structural integrity, as well as beauty and function.</p>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin:1.25rem 0 0.5rem;color:var(--text-primary);">Our Process</h3>
+          <p>We know building a custom home in Vancouver can be stressful. From the initial design to picking building materials and color schemes, every decision can be second-guessed.</p>
+          <p>To keep things smooth, we meet and communicate with our clients at every stage of construction. We invite clients on-site when we need input and give enough time to make sound decisions. We also guide clients on current market trends so they don't end up with outdated materials or styles.</p>
+          <p>With constant communication, the probability of mishaps goes way down. Keeping it simple is key.</p>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin:1.25rem 0 0.5rem;color:var(--text-primary);">What We Build</h3>
+          <p>Custom single-family homes, duplexes, and multi-unit builds across Greater Vancouver and Burnaby. We handle everything from lot selection and permits through to final walkthrough.</p>`
+      },
+      'laneway-homes': {
+        title: 'Laneway Homes',
+        image: `${SQ}/b7dfde2e-cf1b-495c-886d-b2f1c068cf0e/20250925_132721.jpg?format=1500w`,
+        highlights: ['Up to 1,000 sq ft', 'No Strata Fees', 'Rental Income', 'Full Permits'],
+        desc: `<p>The City of Vancouver has increased the FSR from 16% to 25% — that means on a standard 33×120 lot you can build approximately 1,000 sq ft of laneway home. Burnaby has adopted laneway homes as well, among several other cities.</p>
+          <p>C-Best Homes has been building laneway houses in Vancouver since the program launched in 2009. The lane is changing from a place where people put out their garbage to a more vibrant, family-friendly social space.</p>
+          <p>Laneway houses have become a pillar of our profession in recent years, offering families an affordable alternative to townhomes and condos. Factor in the absence of strata fees and the privacy of having a detached home — it's easy to see why building a laneway house is a no-brainer.</p>
+          <p>From concept to completion, every step of our laneway projects is done with care and concern for architectural and structural integrity, as well as beauty and function.</p>`
+      },
+      'renovations': {
+        title: 'Bathroom & Home Renovations',
+        image: `${SQ}/1491641141769-B7JX4QZ7SZT8FPD01UW6/vancouver-custom-home-cbest.jpg?format=1500w`,
+        highlights: ['Full Home Renos', 'Bathroom Specialists', 'On-Site Assessment', 'On Time & Budget'],
+        desc: `<p>We've all seen it on TV — the shabby "before" to the dazzling "after" renovation, making it look so easy. Anyone who has lived through a renovation in progress will tell you it can become a nightmare.</p>
+          <p>C-Best Homes brings experience and expertise to home renovations, revamping your home and making sure your project doesn't drag on for months. From small changes to large full-home renovations, we've got you covered. Our team will make a site visit to determine scope of work, then lock down cost and timeline.</p>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin:1.25rem 0 0.5rem;color:var(--text-primary);">Bathroom Renovations</h3>
+          <p>Looking for the best rates for your bathroom renovation? We provide detailed quotes based on size, layout, quality and number of fixtures, tile design, and current condition. We get the best rates from our suppliers to make sure your bathroom makeover is done on time and on budget.</p>`
+      }
+    };
+
+    function openServiceModal(id) {
+      const s = serviceData[id];
+      if (!s) return;
+      document.getElementById('serviceModalImg').src = s.image;
+      document.getElementById('serviceModalImg').alt = s.title;
+      document.getElementById('serviceModalTitle').textContent = s.title;
+      document.getElementById('serviceModalHighlights').innerHTML = s.highlights.map(h => `<span class="modal-spec"><span class="modal-spec-icon">✓</span>${h}</span>`).join('');
+      document.getElementById('serviceModalDesc').innerHTML = s.desc;
+      document.getElementById('serviceModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeServiceModal() {
+      document.getElementById('serviceModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('serviceModal').addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal-overlay')) closeServiceModal();
+    });
+
+    // ========== BLOG MODAL ==========
+    const blogData = {
+      'mold-free': {
+        date: 'April 14, 2021',
+        title: 'How to Keep Your Bathroom Mold-Free: 5 Important Tips',
+        content: `<p>Have you ever been bothered by the growing mold in your bathroom? If the answer is NO, then you are fortunate because once it makes itself grow in the bathroom, it is challenging to get rid of it permanently.</p>
+          <p>Mold is a fungi family member that always thrives in a place with low light and high humidity conditions, and bathrooms are the perfect breeding ground for it. It can grow anywhere on walls, ceilings, floor covering, and tile grouts.</p>
+          <p>Here are five tips to keep your bathroom mold-free: keep surfaces dry after use, improve ventilation with exhaust fans, fix leaks immediately, use mold-resistant paint and materials, and clean regularly with mold-fighting products.</p>`
+      },
+      'summer-renos': {
+        date: 'March 20, 2021',
+        title: '5 Simple and Low-Cost Home Renovations for Summer Season',
+        content: `<p>Summer is the best time to take up a home renovation or custom home building project.</p>
+          <p>If you are planning to renovate your house using the opportunity available on summer days, we have come up with some straightforward and low-cost home renovation ideas that can help you enhance the beauty of your home for sure.</p>
+          <p>Consider updating your outdoor living space, refreshing your paint colors, upgrading lighting fixtures, adding smart home features, or improving your landscaping. Small changes add up to big improvements.</p>`
+      },
+      'kitchen-remodel': {
+        date: 'March 15, 2021',
+        title: 'How Can You Effectively Remodel Your Kitchen on a Budget in Vancouver',
+        content: `<p>Who does not want the most important part of their home to look new, attractive, and elegant? Of course, everyone does. After all, the kitchen is the center of a family's day-to-day living.</p>
+          <p>Especially if you live in Vancouver, Canada, where the latest trend is to get custom homes built. From preparing the meals to serving the guests, it all normally happens in the kitchen.</p>
+          <p>The kitchen is worth remodeling if it is old, looks outdated, or just dull. Focus on high-impact changes: update cabinet hardware, add a fresh backsplash, upgrade countertops, improve lighting, and consider open shelving for a modern look.</p>`
+      },
+      'landscaping': {
+        date: 'February 20, 2021',
+        title: '5 Simple Landscaping Ideas to Increase the Face Value of the House',
+        content: `<p>Are you planning to sell your Vancouver home and are worried about how to maximize its value? Well, landscaping is one of the easiest ways to enrich your home.</p>
+          <p>According to research, landscaping can increase the value of your home by 15% to 20%.</p>
+          <p>Consider these ideas: create a welcoming front entrance, add outdoor lighting, plant low-maintenance native shrubs, build a small patio or deck, and maintain a clean, well-manicured lawn.</p>`
+      },
+      'living-room': {
+        date: 'February 15, 2021',
+        title: '5 Easy Ways to Do an Inspiring Living Room Remodel on a Budget',
+        content: `<p>So you are planning to do an inspiring living room renovation in Vancouver to give a high-end look to your house. The living room is a part of your home where you and your family spend most of your time, entertain your guests, do homework with the kids, and socialize.</p>
+          <p>Living room remodeling gives an overall gleaming effect to your home. Whether your living room looks out of style, or you are bored with the old design — the easy ways discussed here will make your home adorable to live in and pay you off at the time of selling in the form of high ROI.</p>
+          <p>Try these: repaint with a modern palette, update your light fixtures, add statement art or mirrors, rearrange furniture for better flow, and swap throw pillows and textiles for a fresh look.</p>`
+      },
+      'renovate-older': {
+        date: 'December 1, 2020',
+        title: 'Should You Renovate Your Older Home?',
+        content: `<p>Your 20-year-old house is beginning to show its age. The kitchen closets have deteriorated, and the bathrooms could use an update. So, the question pops up — should you renovate your older house? And could you recover the cost?</p>
+          <p>In most cases, renovating is more cost-effective than buying a new home. Focus on rooms that give the highest return: kitchens, bathrooms, and curb appeal. A well-planned renovation can increase your home's value by 10\u201325% depending on the scope of work.</p>`
+      },
+      'energy-efficiency': {
+        date: 'September 10, 2020',
+        title: 'Energy Efficiency Trends in Home Construction',
+        content: `<p>Everyone designs a home considering future family plans — but do we plan for future sustainability? When designing a home, it is crucial to plan for both the sustainability of the house and the environment.</p>
+          <p>Energy-efficient features will require proper planning for designs and construction, but they'll save money in the long run. It's worth it to avoid wasting resources and protect the environment.</p>
+          <p>Current trends include: high-performance insulation, triple-pane windows, heat recovery ventilation (HRV), solar-ready construction, LED lighting throughout, and smart thermostats.</p>`
+      },
+      'consultation': {
+        date: 'August 31, 2020',
+        title: 'Is Getting a Consultation from Custom Home Builders a Good Idea?',
+        content: `<p>One of the issues you will face while planning and constructing your home is finding the right home builder. And the best way of figuring out which company will work for you is to set up a free consultation session with the builders.</p>
+          <p>A consultation lets you gauge the builder's experience, communication style, and whether they understand your vision. Ask about their process, timeline estimates, past projects, and how they handle unexpected issues.</p>
+          <p>At C-Best Homes, we offer free consultations because we believe in building trust before building homes. Give us a call at 778-239-0952 to get started.</p>`
+      }
+    };
+
+    function openBlogModal(id) {
+      const b = blogData[id];
+      if (!b) return;
+      document.getElementById('blogModalDate').textContent = b.date;
+      document.getElementById('blogModalTitle').textContent = b.title;
+      document.getElementById('blogModalContent').innerHTML = b.content;
+      document.getElementById('blogModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeBlogModal() {
+      document.getElementById('blogModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('blogModal').addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal-overlay')) closeBlogModal();
+    });
+
+    // ========== PRIVACY MODAL ==========
+    function openPrivacyModal() {
+      document.getElementById('privacyModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePrivacyModal() {
+      document.getElementById('privacyModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('privacyModal').addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal-overlay')) closePrivacyModal();
+    });
+
+    // Update keyboard handler for all modals
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (document.getElementById('blogModal').classList.contains('open')) closeBlogModal();
+        if (document.getElementById('privacyModal').classList.contains('open')) closePrivacyModal();
+      }
+    });
+  </script>
+</body>
+</html>
