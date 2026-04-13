@@ -5,9 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>C-Best Homes — Custom Home Builders in Vancouver</title>
   <meta name="description" content="Vancouver's trusted custom home builder since 2005. Custom homes, laneway homes, and renovations across Greater Vancouver.">
+  <meta property="og:title" content="C-Best Homes — Custom Home Builders in Vancouver">
+  <meta property="og:description" content="Custom homes, laneway homes, and full renovations across Greater Vancouver. Over 200 homes built since 2005.">
+  <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1491640867008-PH5NR3TFFTSYFZ2DZID4/2ae54963825ca2bdfa8481c43a0f7a89.jpg?format=1500w">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1551721340265-NTUXCPZUUX5Z8BKAZQ22/cbesthomes.png?format=100w" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
     /* ============================================
        CSS CUSTOM PROPERTIES — LIGHT & DARK THEMES
@@ -1654,6 +1660,20 @@
       font-weight: 500;
       color: var(--accent);
     }
+
+    /* ============================================
+       REDUCED MOTION
+       ============================================ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .hero-bg img { transition: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
   </style>
 </head>
 <body>
@@ -2366,10 +2386,11 @@
       // Pause on hover
       const hero = document.querySelector('.hero');
       hero.addEventListener('mouseenter', () => clearInterval(interval));
-      hero.addEventListener('mouseleave', () => { interval = setInterval(next, DELAY); });
+      hero.addEventListener('mouseleave', () => { if (!prefersReducedMotion) interval = setInterval(next, DELAY); });
 
-      // Start
-      interval = setInterval(next, DELAY);
+      // Respect reduced motion
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!prefersReducedMotion) interval = setInterval(next, DELAY);
     })();
 
     // ========== PROJECT MODAL ==========
@@ -2589,16 +2610,16 @@
       if (e.target.classList.contains('modal-overlay')) closeProjectModal();
     });
 
-    // Close on Escape key
+    // Keyboard handler for all modals
     document.addEventListener('keydown', (e) => {
       if (document.getElementById('projectModal').classList.contains('open')) {
         if (e.key === 'Escape') closeProjectModal();
         if (e.key === 'ArrowRight') modalNextImg();
         if (e.key === 'ArrowLeft') modalPrevImg();
       }
-      if (document.getElementById('serviceModal').classList.contains('open')) {
-        if (e.key === 'Escape') closeServiceModal();
-      }
+      if (document.getElementById('serviceModal').classList.contains('open') && e.key === 'Escape') closeServiceModal();
+      if (document.getElementById('blogModal').classList.contains('open') && e.key === 'Escape') closeBlogModal();
+      if (document.getElementById('privacyModal').classList.contains('open') && e.key === 'Escape') closePrivacyModal();
     });
 
     // ========== SERVICE MODAL ==========
@@ -2749,13 +2770,6 @@
       if (e.target.classList.contains('modal-overlay')) closePrivacyModal();
     });
 
-    // Update keyboard handler for all modals
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (document.getElementById('blogModal').classList.contains('open')) closeBlogModal();
-        if (document.getElementById('privacyModal').classList.contains('open')) closePrivacyModal();
-      }
-    });
   </script>
 </body>
 </html>
