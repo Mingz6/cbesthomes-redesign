@@ -1402,21 +1402,218 @@
     }
 
     /* ============================================
-       DRAFT WATERMARK
+       CHAT WIDGET
        ============================================ */
-    .draft-banner {
+    .chat-toggle {
       position: fixed;
-      bottom: 1rem;
-      right: 1rem;
+      bottom: 1.5rem;
+      right: 1.5rem;
       z-index: 9999;
-      padding: 0.75rem 1.25rem;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
       background: var(--accent);
       color: #fff;
-      font-size: 0.8rem;
-      font-weight: 600;
-      border-radius: 100px;
-      box-shadow: var(--shadow-lg);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .chat-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(0,0,0,0.35); }
+    .chat-toggle svg { width: 24px; height: 24px; }
+    .chat-toggle.open { display: none; }
+
+    .chat-panel {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 9999;
+      width: min(400px, calc(100vw - 2rem));
+      height: min(540px, calc(100vh - 3rem));
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.2);
+      opacity: 0;
       pointer-events: none;
+      transform: translateY(12px) scale(0.95);
+      transition: opacity 0.25s, transform 0.25s;
+    }
+    .chat-panel.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    @media (max-width: 480px) {
+      .chat-panel {
+        bottom: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        border-radius: 0;
+      }
+    }
+
+    .chat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.875rem 1rem;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .chat-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .chat-header-left img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: contain;
+    }
+    .chat-header-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+    }
+    .chat-header-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+    .chat-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      padding: 4px;
+      border-radius: 8px;
+      transition: background 0.15s;
+    }
+    .chat-close:hover { background: var(--bg-secondary); }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .chat-msg {
+      max-width: 82%;
+      padding: 0.65rem 0.9rem;
+      border-radius: 14px;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      word-wrap: break-word;
+    }
+    .chat-msg.bot {
+      align-self: flex-start;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      border-bottom-left-radius: 4px;
+    }
+    .chat-msg.user {
+      align-self: flex-end;
+      background: var(--accent);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat-quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      padding: 0 1rem 0.5rem;
+      flex-shrink: 0;
+    }
+    .chat-quick-btn {
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      background: var(--bg-secondary);
+      font-size: 0.78rem;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .chat-quick-btn:hover {
+      background: var(--accent-light);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .chat-input-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .chat-input {
+      flex: 1;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      outline: none;
+      font-family: inherit;
+    }
+    .chat-input:focus { border-color: var(--accent); }
+    .chat-input::placeholder { color: var(--text-muted); }
+    .chat-send {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+    .chat-send:hover { filter: brightness(1.1); }
+    .chat-send:disabled { opacity: 0.4; cursor: default; }
+    .chat-send svg { width: 16px; height: 16px; }
+
+    .chat-typing {
+      align-self: flex-start;
+      display: flex;
+      gap: 4px;
+      padding: 0.65rem 0.9rem;
+      background: var(--bg-secondary);
+      border-radius: 14px;
+      border-bottom-left-radius: 4px;
+    }
+    .chat-typing span {
+      width: 6px;
+      height: 6px;
+      background: var(--text-muted);
+      border-radius: 50%;
+      animation: chatBounce 1.2s infinite;
+    }
+    .chat-typing span:nth-child(2) { animation-delay: 0.15s; }
+    .chat-typing span:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes chatBounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-4px); }
     }
 
     /* Theme toggle button */
@@ -1460,7 +1657,11 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
-      padding: 1rem;
+      padding: 0.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .modal-overlay { padding: 1rem; }
     }
 
     .modal-overlay.open {
@@ -1471,15 +1672,27 @@
     .modal {
       background: var(--bg-card);
       border-radius: var(--radius-lg);
-      max-width: 900px;
+      max-width: 1100px;
       width: 100%;
-      max-height: 90vh;
+      max-height: 98vh;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       box-shadow: 0 24px 80px rgba(0,0,0,0.4);
       transform: translateY(20px) scale(0.97);
       transition: transform 0.3s ease;
+    }
+
+    @media (max-width: 640px) {
+      .modal {
+        max-height: 100vh;
+        max-height: 100dvh;
+        border-radius: 12px;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      .modal { max-width: 1200px; }
     }
 
     .modal-overlay.open .modal {
@@ -1678,8 +1891,32 @@
 </head>
 <body>
 
-  <!-- DRAFT BANNER -->
-  <div class="draft-banner">DRAFT — Redesign Concept v1</div>
+  <!-- CHAT WIDGET -->
+  <button class="chat-toggle" id="chatToggle" aria-label="Open chat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  </button>
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <img src="https://images.squarespace-cdn.com/content/v1/58e5d537e3df286cba6c6c3b/1551721340265-NTUXCPZUUX5Z8BKAZQ22/cbesthomes.png?format=100w" alt="C-Best">
+        <div>
+          <div class="chat-header-title">C-Best Homes</div>
+          <div class="chat-header-sub">Ask us anything</div>
+        </div>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Close chat">✕</button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-quick-replies" id="chatQuickReplies"></div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="chatInput" type="text" placeholder="Type a question..." maxlength="500">
+      <button class="chat-send" id="chatSend" aria-label="Send">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
 
   <!-- NAVIGATION -->
   <nav class="nav" id="nav">
@@ -2769,6 +3006,131 @@
     document.getElementById('privacyModal').addEventListener('click', (e) => {
       if (e.target.classList.contains('modal-overlay')) closePrivacyModal();
     });
+
+    /* ============================================
+       CHAT WIDGET
+       ============================================ */
+    (function() {
+      const toggle = document.getElementById('chatToggle');
+      const panel = document.getElementById('chatPanel');
+      const closeBtn = document.getElementById('chatClose');
+      const messagesEl = document.getElementById('chatMessages');
+      const quickEl = document.getElementById('chatQuickReplies');
+      const inputEl = document.getElementById('chatInput');
+      const sendBtn = document.getElementById('chatSend');
+
+      const QUICK_REPLIES = [
+        'What services do you offer?',
+        'How do I get a quote?',
+        'Where are you located?',
+        'Tell me about your projects',
+        'Contact information',
+      ];
+
+      const RESPONSES = {
+        greeting: `Hi there! 👋 Welcome to C-Best Homes. I'm here to help you with questions about our custom home building services in Vancouver. What can I help you with?`,
+        services: `We specialize in three core services:\n\n🏗️ <b>Custom Home Building</b> — ground-up design + construction\n🔨 <b>Major Renovations</b> — full gut renos, additions & structural changes\n📐 <b>Architectural Design</b> — custom plans tailored to your lot and lifestyle\n\nWant more details on any of these? Or scroll up to our <a href="#services" onclick="closeChatAndScroll('services')">Services section</a>.`,
+        quote: `Getting a free estimate is easy:\n\n1. Click <a href="#contact" onclick="closeChatAndScroll('contact')"><b>Get Estimate</b></a> or scroll to our contact section\n2. Call us at <a href="tel:7782390952">778-239-0952</a> (Nik)\n3. Or email <a href="mailto:info@cbesthomes.com">info@cbesthomes.com</a>\n\nWe'll set up a free consultation to discuss your project.`,
+        location: `📍 We're based in Vancouver, BC:\n\n<b>C-Best Homes Ltd</b>\n952 East 53rd Avenue\nVancouver, BC V5X 1J6\n\nWe build custom homes across Greater Vancouver — from the Westside to Burnaby, Richmond, and the North Shore.`,
+        projects: `We've completed 200+ custom homes since 2005! Check out some of our featured work in the <a href="#projects" onclick="closeChatAndScroll('projects')">Projects section</a>.\n\nHighlights include:\n• Multi-family homes on East 53rd Ave\n• Luxury builds on West 22nd & West 40th\n• Modern designs on Grant Street & Kitchener Street\n\nClick any project card to see photos and specs.`,
+        contact: `Here's how to reach us:\n\n📞 <b>Nik</b>: <a href="tel:7782390952">778-239-0952</a>\n📞 <b>Roger</b>: <a href="tel:6048335162">604-833-5162</a>\n📞 <b>Cheema</b>: <a href="tel:7788695656">778-869-5656</a>\n✉️ <a href="mailto:info@cbesthomes.com">info@cbesthomes.com</a>\n\nOr fill out the form in our <a href="#contact" onclick="closeChatAndScroll('contact')">Contact section</a>.`,
+        about: `C-Best Homes is a family-owned company founded in 2005 by the Cheema family. We've built over 200 custom homes across Vancouver.\n\nWhat sets us apart:\n• 20+ years of experience\n• In-house design & construction\n• Hands-on family involvement in every build\n\nLearn more in our <a href="#about" onclick="closeChatAndScroll('about')">About section</a>.`,
+        fallback: `Good question! I'm a simple assistant, so I might not have the exact answer.\n\nFor specific inquiries, the best way is to contact the team directly:\n📞 <a href="tel:7782390952">778-239-0952</a> (Nik)\n✉️ <a href="mailto:info@cbesthomes.com">info@cbesthomes.com</a>\n\nOr ask me about our <b>services</b>, <b>projects</b>, <b>location</b>, or how to <b>get a quote</b>.`
+      };
+
+      function matchResponse(text) {
+        const t = text.toLowerCase();
+        if (/servic|build|custom|renovat|design|what do you/.test(t)) return RESPONSES.services;
+        if (/quot|estimat|price|cost|how much|free consult/.test(t)) return RESPONSES.quote;
+        if (/locat|address|where|office|vancouver|area/.test(t)) return RESPONSES.location;
+        if (/project|portfolio|work|home|built|house/.test(t)) return RESPONSES.projects;
+        if (/contact|phone|call|email|reach|number/.test(t)) return RESPONSES.contact;
+        if (/about|who|company|team|family|history|cheema|founded/.test(t)) return RESPONSES.about;
+        if (/hi|hello|hey|good morning|good afternoon/.test(t)) return RESPONSES.greeting;
+        return RESPONSES.fallback;
+      }
+
+      function addMessage(text, role) {
+        const div = document.createElement('div');
+        div.className = 'chat-msg ' + role;
+        div.innerHTML = text;
+        messagesEl.appendChild(div);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
+
+      function showTypingThenReply(text) {
+        const typing = document.createElement('div');
+        typing.className = 'chat-typing';
+        typing.innerHTML = '<span></span><span></span><span></span>';
+        messagesEl.appendChild(typing);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+        quickEl.innerHTML = '';
+
+        setTimeout(() => {
+          typing.remove();
+          addMessage(text, 'bot');
+          showQuickReplies();
+        }, 600 + Math.random() * 400);
+      }
+
+      function showQuickReplies() {
+        quickEl.innerHTML = '';
+        QUICK_REPLIES.forEach(q => {
+          const btn = document.createElement('button');
+          btn.className = 'chat-quick-btn';
+          btn.textContent = q;
+          btn.onclick = () => handleUserMessage(q);
+          quickEl.appendChild(btn);
+        });
+      }
+
+      function handleUserMessage(text) {
+        addMessage(text, 'user');
+        const reply = matchResponse(text);
+        showTypingThenReply(reply);
+      }
+
+      // Open / close
+      toggle.onclick = () => {
+        panel.classList.add('open');
+        toggle.classList.add('open');
+        inputEl.focus();
+        if (!messagesEl.children.length) {
+          showTypingThenReply(RESPONSES.greeting);
+        }
+      };
+      closeBtn.onclick = () => {
+        panel.classList.remove('open');
+        toggle.classList.remove('open');
+      };
+
+      // Send message
+      function send() {
+        const text = inputEl.value.trim();
+        if (!text) return;
+        inputEl.value = '';
+        handleUserMessage(text);
+      }
+      sendBtn.onclick = send;
+      inputEl.onkeydown = (e) => { if (e.key === 'Enter') { e.preventDefault(); send(); } };
+
+      // Close on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && panel.classList.contains('open')) {
+          panel.classList.remove('open');
+          toggle.classList.remove('open');
+        }
+      });
+
+      // Helper: close chat and scroll to section
+      window.closeChatAndScroll = function(id) {
+        panel.classList.remove('open');
+        toggle.classList.remove('open');
+        setTimeout(() => {
+          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        }, 200);
+      };
+    })();
 
   </script>
 </body>
