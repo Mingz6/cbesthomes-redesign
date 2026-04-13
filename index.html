@@ -240,6 +240,13 @@
     .nav-logo img {
       height: 36px;
       width: auto;
+      filter: brightness(0);
+      transition: filter 0.3s ease;
+    }
+
+    [data-theme="dark"] .nav-logo img { filter: brightness(1); }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .nav-logo img { filter: brightness(1); }
     }
 
     .nav-logo-text {
@@ -1479,6 +1486,12 @@
       height: 28px;
       border-radius: 50%;
       object-fit: contain;
+      filter: brightness(0);
+      transition: filter 0.3s ease;
+    }
+    [data-theme="dark"] .chat-header-left img { filter: brightness(1); }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .chat-header-left img { filter: brightness(1); }
     }
     .chat-header-title {
       font-weight: 600;
